@@ -10,3 +10,10 @@ Users: User creation and them creating content on my website would be way more c
 I am aware that all my goals are somehow also achievable in Flask. But it would have cost me way more time than to just use another framework, which offers a lot of my goals out of the box already.
 
 So I decided to try out Django.
+
+# To make this run
+I recommend setting up a virtual environment and then simply:
+- pip install flask
+
+After that you just run the "__init__.py" file and it should be starting the server at various IPs (I used 0.0.0.0:5000, which picks all IPs available on the computer).
+To see the website go to the browser and type in 127.0.0.1:5000. This is only for debugging and developement, please consider using apache2 and wsgi when hosting as a live website.
