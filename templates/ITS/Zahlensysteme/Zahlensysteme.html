@@ -1,0 +1,218 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<div class="container">
+	<div class="row justify-content-md-center">
+
+			
+		<div class="col-md-10">
+		<div class="main">
+	  <h1>{{aktThema}}</h1>
+	  <h2>Binärsystem:</h2>
+	  <p>Computer arbeiten mit dem Binärsystem: Alle Signale die verarbeitet werden sind im Grunde entweder 0en oder 1en.
+		Damit Menschen besser verstehen was ein Computer rechnet, kann man in andere System umrechnen. 
+		Um z.B. das Binärsystem in unser System (Dezimal) umzurechnen ist folgendes zu bedenken:</p>
+	  <p>- Binär: 0 und 1<br>
+		 - Dezimal: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</p>
+		 <p>Sobald man also höher als 1 zählen möchte, muss in dem Binärsystem eine neue Zahl geschaffen werden:</p>
+		 <p>- (bin.)  1 = (dez.)1<br>
+- (bin.) 10 = (dez.)2<br>
+- (bin.) 11 = (dez.)3<br>
+- (bin.)100 = (dez.)4<br>
+usw.</p>
+		 <p>Das gleiche gilt in unserem Zahlensystem (Dezimal) auch, denn nach der 9 nutzen wir statt neuen Zahlen, eigentlich
+nur alte vorhandene Zeichen und vergrößern die Anzahl. Z.B.: 487 ist eine Zahl die aus den Ziffern 0-9 besteht, allerdings
+gibt hier die Anzahl und die Kombinationen den tatsächlichen Wert. </p>
+		 <p>Wenn dies verstanden wurde, dann ist man in der Lage jegliches andere Zahlensystem zu nutzen. Ein weiteres wichtiges Zahlensystem
+wäre Hexadezimal. Hier gibt es 16 unterschiedliche Zeichen bevor man ein neues Zeichen hinzufügen muss:<br>
+- Hexadezimal: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</p>
+<hr>
+		 <p><h2>Umrechnung:</h2>
+Es gibt hier mehrere Wege zur Umrechnung zwischen den Zahlensystemen. Such dir am besten eine aus, die du dir gut merken kannst.</p>
+<div class="font-weight-bold">Binär zu Dezimal:</div>
+<p>Da es in dem Binärsystem pro Zeichen nur zwei Zustände gibt (also 0 und 1) kann man die Zweierpotenzen nutzen
+um die Werte einzelner Stellen herauszufinden. Man muss allerdings diese Zweierpotenzen miteinander addieren um
+den richtigen Dezimalwert zu erhalten:<br>
+<div class="font-weight-bold">Bsp.:</div> 11011010
+Wir zählen nun (von rechts nach links!) die Ziffern durch (Achtung! Immer bei 0 anfangen zu zählen) und nutzen 
+diesen dann anschließend als Exponent zur Basis 2:
+Hier also: 1*2^7
+jetzt geht man einfach der Reihe durch und addiert, also:</p>
+		 <p>1*2^7 + 1*2^6 + 0*2^5 + 1*2^4 + 1*2^3 + 0*2^2 + 1*2^1 + 0*2^0 = 218(dez)</p>
+		 <p>Um sich dies zu erleichtern kann man eine kleine Tabelle vorbereiten um Zweierpotenzen schneller zusammenrechnen zu können:</p>
+				<table class="table table-sm table-hover">
+				  <thead>
+					<tr>
+					  <th scope="col">2<sup>8</sup></th>
+					  <th scope="col">2<sup>7</sup></th>
+					  <th scope="col">2<sup>6</sup></th>
+					  <th scope="col">2<sup>5</sup></th>
+					  <th scope="col">2<sup>4</sup></th>
+					  <th scope="col">2<sup>3</sup></th>
+					  <th scope="col">2<sup>2</sup></th>
+					  <th scope="col">2<sup>1</sup></th>
+					  <th scope="col">2<sup>0</sup></th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>256</td>
+					  <td>128</td>
+					  <td>64</td>
+					  <td>32</td>
+					  <td>16</td>
+					  <td>8</td>
+					  <td>4</td>
+					  <td>2</td>
+					  <td>1</td>
+					</tr>
+					<tr>
+					  <td></td>
+					  <td>1</td>
+					  <td>1</td>
+					  <td>0</td>
+					  <td>1</td>
+					  <td>1</td>
+					  <td>0</td>
+					  <td>1</td>
+					  <td>0</td>
+					</tr>
+					</tbody>
+				</table>
+		 <p>Hier ist schneller zu erkennen welche Zahlen zusammenaddiert werden müssen (wir brauchen nur die Stellen, die eine "1" haben):</p>
+<p>128 + 64 + 16 + 8 + 2 = 218</p>
+
+<div class="font-weight-bold">Dezimal zu Binär</div>
+
+<p>Die Tabelle ist deshalb so hilfreich, da sie bei der umgekehrten Rechnung genauso gut hilft.
+Man nimmt also die 218 und schaut sich an wie oft eine Zweierpotenz in die 218 rein passen könnte:</p>
+<p>2<sup>8</sup> ist bereits zu groß, also nehmen wir 2<sup>7</sup>. Dafür notieren wir uns eine 1 und subtrahieren die 128 von der 218:<br>
+1	(90)<br><br>
+2<sup>6</sup> passt also 90 - 64 = 26<br>
+11	(26)<br><br>
+2<sup>5</sup> passt nicht<br>
+110	(26)<br><br>
+2<sup>4</sup> passt: 26 - 16 = 10<br>
+1101(10)<br><br>
+2<sup>3</sup> passt: 10 - 8 = 2<br>
+11011(2)<br><br>
+2<sup>2</sup> passt nicht<br>
+110110(2)<br><br>
+2<sup>1</sup> passt: 2 - 2 = 0<br>
+1101101(0)<br><br>
+2<sup>0</sup> passt nicht<br>
+<br>
+11011010 <br>
+<br>
+fertig.</p>
+		 <p><div class="font-weight-bold">Hexadezimal zu Binär</div>
+		 Man kann hier natürlich ebenfalls (ähnlich wie oben bei Binär) mit der allgemeinen Regel an die Sache gehen. Dies ist
+		 durchaus möglich, kann jedoch viel Zeit in Anspruch nehmen falls gerade kein Taschenrechner zur Hand liegt (oder keiner benutzt
+		 werden darf;)). Deswegen gibt es einen guten Trick aus Papas Kiste:</p>
+		 <p>Eine Hexadezimal Zahl hat 16 unterschiedliche Zustände. Diese habe ich oben bereits einmal aufgezählt.
+		 16 Zustände entsprechen 4 binäre Zahlen (z.B.: F = 1111). Dies hat zur Folge, dass man jedes einzelne Zeichen aus dem hexadezimal System 
+		 als 4 binäre Zahlen von links nach rechts schreiben kann. Hier eine kleine Hilfstabelle:</p>
+		 
+			<div class="table-responsive">
+				<table class="table table-sm table-hover">
+				  <thead>
+					<tr>
+					  <th scope="col">hexadezimal:</th>
+					  <th scope="col">0</th>
+					  <th scope="col">1</th>
+					  <th scope="col">2</th>
+					  <th scope="col">3</th>
+					  <th scope="col">4</th>
+					  <th scope="col">5</th>
+					  <th scope="col">6</th>
+					  <th scope="col">7</th>
+					  <th scope="col">8</th>
+					  <th scope="col">9</th>
+					  <th scope="col">A</th>
+					  <th scope="col">B</th>
+					  <th scope="col">C</th>
+					  <th scope="col">D</th>
+					  <th scope="col">E</th>
+					  <th scope="col">F</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>dezimal:</td>
+					  <td>0</td>
+					  <td>1</td>
+					  <td>2</td>
+					  <td>3</td>
+					  <td>4</td>
+					  <td>5</td>
+					  <td>6</td>
+					  <td>7</td>
+					  <td>8</td>
+					  <td>9</td>
+					  <td>10</td>
+					  <td>11</td>
+					  <td>12</td>
+					  <td>13</td>
+					  <td>14</td>
+					  <td>15</td>
+					</tr>
+					<tr>
+					  <td>binär:</td>
+					  <td>0</td>
+					  <td>1</td>
+					  <td>10</td>
+					  <td>11</td>
+					  <td>100</td>
+					  <td>101</td>
+					  <td>110</td>
+					  <td>111</td>
+					  <td>1000</td>
+					  <td>1001</td>
+					  <td>1010</td>
+					  <td>1011</td>
+					  <td>1100</td>
+					  <td>1101</td>
+					  <td>1110</td>
+					  <td>1111</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+				
+		 <p>An dem Beispiel "DA"(hex) können wir nun mithilfe der Hilfstabellen schnell und einfach ans Ziel kommen. Wir gehen von links nach rechts 
+		 und fangen mit "D" an:</p>
+		 
+		 <p>D(hex) = 13(dez), 13(dez) = 1101<br>
+		 Danach weiter mit der "Zahl" A(hex):<br>
+		 A(hex) = 10(dez), 10(dez) = 1010</p>
+		 
+		 <p>Nun noch beide Binärzahlen in richtiger Reihenfolge aufschreiben:</p>
+		 
+		 <p>1101 1010</p>
+		 
+		 <p>Von hier aus kann nun wieder das "Binär-zu-Dezimal"-Schema genutzt werden. Somit kann man nun in jede der 3 Zahlensysteme umrechnen.</p>
+		 
+		 
+		 
+		 
+		 
+	  <p><a href="{{kartenURL}}">Klicke hier</a> für die Flashcards</p>
+			</div>
+		</div>
+		
+				<div class="col-md-2">
+				{% include "sidebar.html" %}
+				</div>
+
+	</div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

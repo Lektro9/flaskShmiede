@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Die Shmiede</title>
+	{% if flashcard == "true" %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='css/bootstrap_button.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css'>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link href="{{ url_for('static', filename='css/flashstyle.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	{% else %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	{% endif %}
+	{% if sidenav == "true" %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='css/sidenav.css') }}" rel="stylesheet">
+	{% endif %}
+</head>
+{% if flashcard == "true" %}
+{% else %}
+<header>
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+	  <a class="navbar-brand" href="/">Shmiede</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarText">
+		<ul class="navbar-nav mr-auto">
+		  <li class="nav-item active">
+			<a class="nav-link" href="/ITS">ITS<span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item active">
+			<a class="nav-link" href="/AWE">AWE<span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item active">
+			<a class="nav-link" href="/Englisch">Englisch<span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item active">
+			<a class="nav-link" href="/WGP">WGP<span class="sr-only">(current)</span></a>
+		  </li>
+		</ul>
+		<span class="navbar-text">
+		  Die Shmiede
+		</span>
+	  </div>
+	</nav>
+</header>
+{% endif %}
+<body>
+	{% block body %}{% endblock %}
+</body>
+
+
+</html>

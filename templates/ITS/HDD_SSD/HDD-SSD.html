@@ -1,0 +1,93 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<div class="container">
+	<div class="row justify-content-md-center">
+
+
+			
+		<div class="col-lg-10">
+		<div class="main">
+	
+			
+	
+	  <h1>{{aktThema}}</h1>
+	  
+	  <p>Festplatten sollen den Zweck erfüllen günstig viel Speicher zu bieten und 
+	  diesen ebenfalls zu behalten, wenn kein Strom vorhanden ist 
+	  („nichtflüchtiger Speicher“). Es gibt viele unterschiedliche Anschlussmöglichkeiten, 
+	  für unterschiedliche Situationen und Geschwindigkeiten:</p>
+	  
+	<ul>
+	  <li><a href="https://en.wikipedia.org/wiki/Serial_ATA">SATA</a></li>
+	  <li><a href="https://de.wikipedia.org/wiki/Serial_Attached_SCSI">SAS</a></li>
+	  <li><a href="https://en.wikipedia.org/wiki/Parallel_SCSI">Parallel SCSI</a></li>
+	  <li><a href="https://www.elektronik-kompendium.de/sites/com/0904051.htm">PCIe</a></li>
+	  <li><a href="https://de.wikipedia.org/wiki/Fibre_Channel">Fibre-Channel-Interface</a></li>
+	</ul>
+	  
+	  
+	  
+	  <p>Es ist wichtig zu erwähnen, dass Festplatten beim „Entfernen“ von Daten diese nicht 
+	  wirklich löscht, sondern einfach nur als „freien“ Speicher frei gibt. Deswegen gibt 
+	  es vom <a href=www.bsi-fuer-buerger.de>BSI</a> genaue 
+	  <a href=https://www.bsi-fuer-buerger.de/BSIFB/DE/Empfehlungen/RichtigLoeschen/richtigloeschen_node.html>
+	  Vorschriften</a> wie man Festplatten richtig „löschen“ sollte. Die zwei meist-genutzten Speichermedien 
+	  wären heut-zu-tage die HDD und die SSD. Hier ist ein kurzer Vergleich:</p>
+	  
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">HDD</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">SSD</a>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+	<ul>
+	  <li>mechanisch</li>
+	  <li>elektromagnetischer Speichervorgang (mithilfe des Schreibkopfes)</li>
+	  <li>Daten werden auf eine runde Platte „geschrieben“</li>
+	  <li>lauter, langsamer und sensibler als SSDs, dafür günstiger Preis/Speicherplatz</li>
+	</ul>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+	<ul>
+	  <li>besitzt einen „SSD-Controller“ der Daten auf „Flash-Speicher“ zuweist</li>
+	  <li>Daten werden in Speicherzellen gespeichert (die wiederum zu Speicherblöcken gehören)</li>
+	  <li>leiser, schneller und robuster als HDDs dafür energiesparender</li>
+	</ul>
+  
+  </div>
+</div>
+<h2>Umrechnung</h2>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Zu7x3GEZliE" allowfullscreen></iframe>
+</div>
+
+
+	  <p></p>
+	  <p></p>
+	  <p></p>
+	  <p></p>
+				
+	  <p><a href="{{kartenURL}}">Klicke hier</a> für die Flashcards</p>
+			</div>
+		</div>
+		
+		<div class="col-md-2">
+		{% include "sidebar.html" %}
+		</div>
+	</div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% set flashcard = "true" %}
+
+{% extends "header.html" %}
+
+
+{% block body %}
+  <div class="container">
+  
+  <h1>Beispiel Karten</h1>
+  <h2>Fachinformatik</h2>
+  
+  <dl>
+    <card>
+      <dt>Dies ist ja mal ein sehr langer Satz! Wie lange kann der denn noch werden? Hmm interessant! Dies ist ja mal ein sehr langer Satz! Wie lange kann der denn noch werden? Hmm interessant!</dt>
+      <dd part="verb">to support, strengthen, or fortify</dd>
+    </card>
+    <card>
+      <dt>Capitalize</dt>
+      <dd part="verb">to use to your advantage</dd>
+    </card>
+    <card>
+      <dt>Cultivate</dt>
+      <dd part="verb">to foster the growth of</dd>
+    </card>
+    <card>
+      <dt>Deficient</dt>
+      <dd part="adjective">not enough in degree or amount</dd>
+    </card>
+    <card>
+      <dt>Eloquent</dt>
+      <dd part="adjective">having refined or expressive communication skills</dd>
+    </card>
+    <card>
+      <dt>Ferocity</dt>
+      <dd>viciousness, violence</dd>
+    </card>
+  </dl>
+  
+   </div>
+   
+    <div  class="mx-auto" style="width: 200px;"><a href="/flashkarten"><button type="button" class="btn btn-primary" >Zurück</button></a></div>
+	
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js'></script>
+
+	<script  src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<div class="container">
+	<div class="row justify-content-md-center">
+
+
+			
+		<div class="col-lg-10">
+		<div class="main">
+	
+			
+	
+	  <h1>{{aktThema}}</h1>
+	  
+	  <h2>Mainboard:</h2>
+	  <p>Auch unter Hauptplatine bekannt, hält das Motherboard alle wichtigen Komponenten zusammen. Diese Komponenten
+		 überhnehmen unterschieldich Aufgaben die letztendlich zur Ausgabe auf dem Bildschirm führen. Die wichtigsten Komponenten
+		 die das Motherboard auf sich hält sind:</p>
+	<ul>
+	  <li>CPU (kann komplexe Aufgaben rechnen) </li>
+	  <li>RAM (flüchtiger Speicher zum Zwischenspeichern)</li>
+	  <li>I/O-Panel welches z.B. USB-Anschlüsse umfasst um von außerhalb des Gehäuses Peripherie anzuschließen</li>
+	  <li>Stromanschlüsse(CPU-Strom (meistens 6-8pin) und Motherboard-Strom (meistens 24-pin) sorgen für Ernergieversorgung)</li>
+	  <li>BIOS zum sicheren Booten der Komponenten</li>
+	  <li>Festplattenanschlüsse (z.B. SATA für Desktops oder SAS für Server/Workstations) um Daten zu speichern und abzurufen</li>
+	  <li>PCIe für diverse Erweiterungskarten wie z.B. Grafikkaten oder Netzwerkkarten</li>
+	  <li>PCH Plattform Controller Hub, um Datenfluss zwischen SATA und I/O-Panel zu steuern</li>
+	  <li>Bussystem("Straßen" zwischen Komponente) bestehend aus Adressbus, Datenbus sowie das Steuerbus um Datenfluss zwischen Komponenten zu steuern</li>
+	</ul>
+	  <p>Da Hauptplatinen in fast jeglichen elektrischen Geräten, die eine Eingabe und Ausgabe regeln müssen, zu finden sind,
+		 gibt es unterschieldiche Bauformen. Standart für Desktop-PCs wäre ein ATX-Board.</p>
+				
+	  <p><a href="{{kartenURL}}">Klicke hier</a> für die Flashcards</p>
+			</div>
+		</div>
+		
+		<div class="col-md-2">
+		{% include "sidebar.html" %}
+		</div>
+	</div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

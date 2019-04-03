@@ -1,0 +1,25 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<div class="container">
+	<div class="row justify-content-md-center">	
+		<div class="col-lg-10">
+			<div class="main">
+			  <h1>Wirtschafts- und Geschäftsprozesse</h1>
+			  <p>Hier findest du im Unterricht besprochene Infos und mehr. Klicke dazu rechts einfach auf das Thema.</p>
+			</div>  
+		</div>
+			<div class="col-md-2">
+			{% include "sidebar.html" %}
+			</div>
+	</div>
+</div>
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

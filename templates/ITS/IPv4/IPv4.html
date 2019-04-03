@@ -1,0 +1,233 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<div class="container">
+	<div class="row justify-content-md-center">			
+		<div class="col-lg-10">
+		<div class="main">
+	  <h1>{{aktThema}}</h1>
+	  
+	  <p>Eine IP (Internet Protocol) -Adresse dient zur Identifikation einzelner Geräte über das Netzwerk. 
+	  IPv4 ist die erste Version des Internet Protocols welche weltweit verbreitet eingesetzt wurde. 
+	  Eine IPv4 besteht aus 32 Bit und gibt somit bis zu 4.294.967.296 (Milliarden) unterschiedliche Zustände 
+	  und somit unterschiedliche Adressmöglichkeiten. Da es ziemlich anstrengend wäre immer 32 Bits 
+	  aufzuschreiben, wenn man jemanden seine IP-Adresse mitteilen möchte, wurde die sogenannte 
+	  „Dot-decimal notation“ eingeführt. Diese teilt die IP-Adresse in 4 gleichgroße Teile mit jeweils einem 
+	  Punkt zur Trennung. Da diese Teile nun aus jeweils 8 Bits bestehen, werden diese auch „Oktett“ genannt. 
+	  Diese „Oktetten“ werden dann in Dezimalzahlen geschrieben.</p>
+	  
+	  <img src="{{ url_for('static', filename='IPAufbau.png') }}" style="width:70%">
+	  
+	  <p><h2>Netzklassen:</h2>
+	  Netzklassen unterteilen alle IP-Adressen in Teilgruppen für verschiedene Nutzer. Anhand der Netzklasse 
+	  kann die Größe der nutzbaren IP-Adressen abgeleitet werden. Dies kann hilfreich sein um zu unterscheiden 
+	  ob eine IP-Adresse ins eigene Netzwerk verläuft oder in ein fremdes Netzwerk. Da diese Netzklassen sich als 
+	  unflexibel erwiesen hat und außerdem sehr große Gruppen definiert hat, wurden Netzklassen später durch 
+	  Subnetting ersetzt. Hier trotzdem eine Tabelle um die Netzklassen zu lernen:
+	  </p>
+
+	  
+	  
+	  
+<div class="table-responsive">  
+	<table class="table table-bordered table-sm">
+	<tbody>
+	<tr>
+	<th>Netzklasse
+	</th>
+	<th>Präfix
+	</th>
+	<th>Adressbereich
+	</th>
+	<th>Netzmaske
+	</th>
+	<th>Hostlänge
+	</th>
+	<th>Netze
+	</th>
+	<th>Hosts pro Netz
+	</th>
+	<th>CIDR Suffix<br />Entsprechung
+	</th></tr>
+	<tr>
+	<td>Klasse A
+	</td>
+	<td>0...
+	</td>
+	<td align="right">0.0.0.0 – 127.255.255.255
+	</td>
+	<td>255.0.0.0
+	</td>
+	<td align="right">24 Bit
+	</td>
+	<td align="right">128
+	</td>
+	<td align="right">16.777.214
+	</td>
+	<td align="right">/8
+	</td></tr>
+	<tr>
+	<td>Klasse B
+	</td>
+	<td>10...
+	</td>
+	<td align="right">128.0.0.0 – 191.255.255.255
+	</td>
+	<td>255.255.0.0
+	</td>
+	<td align="right">16 Bit
+	</td>
+	<td align="right">16.384
+	</td>
+	<td align="right">65.534
+	</td>
+	<td align="right">/16
+	</td></tr>
+	<tr>
+	<td>Klasse C
+	</td>
+	<td>110...
+	</td>
+	<td align="right">192.0.0.0 – 223.255.255.255
+	</td>
+	<td>255.255.255.0
+	</td>
+	<td align="right">8 Bit
+	</td>
+	<td align="right">2.097.152
+	</td>
+	<td align="right">254
+	</td>
+	<td align="right">/24
+	</td></tr>
+	<tr>
+	<td>Klasse D
+	</td>
+	<td>1110...
+	</td>
+	<td align="right">224.0.0.0 – 239.255.255.255
+	</td>
+	<td align="center" colspan="6">Verwendung für Multicast-Anwendungen
+	</td>
+	</tr>
+	<tr>
+	<td>Klasse E
+	</td>
+	<td>1111...
+	</td>
+	<td align="right">240.0.0.0 – 255.255.255.255
+	</td>
+	<td align="center" colspan="6">reserviert (für zukünftige Zwecke)
+	</td>
+	</tr></tbody></table>
+</div>
+	  
+	  <p>Tabelle mithilfe von <a href="https://de.wikipedia.org/wiki/Netzklasse">Wikipedia</a> erstellt</p>
+	  <p><h2>Private Adressbereiche:</h2>
+		1994 wurden von der <a href="https://de.wikipedia.org/wiki/Internet_Assigned_Numbers_Authority">IANA</a> 
+		3 private Adress-Bereiche bestimmt, die nicht als öffentliche IP-Adressen verwendet werden können. Diese 
+		wurden absichtlich ausgespart, um IP-Adressen für lokale Geräte vergeben zu können ohne administrativen 
+		Mehraufwand (z.B. Registrierung der IP-Adressen). Somit kann eine „Intranet“ erstellt werden welches aus 
+		dem Internet heraus nicht erreicht werden kann, da Router diese privaten IP-Bereiche ignorieren. 
+		Folgende IP-Bereiche sind privat:
+	  </p>
+	  
+<div class="table-responsive"> 	  
+	<table class="table table-bordered table-sm">
+		<tbody><tr>
+		<th>Netzadressbereich
+		</th>
+		<th>CIDR-Notation
+		</th>
+		<th>Verkürzte CIDR-Notation
+		</th>
+		<th>Anzahl Adressen
+		</th>
+		<th>Anzahl Netze gemäß Netzklasse (historisch)
+		</th></tr>
+		<tr>
+		<td>10.0.0.0 bis 10.255.255.255
+		</td>
+		<td>10.0.0.0/8
+		</td>
+		<td>10/8
+		</td>
+		<td>2<sup>24</sup> = 16.777.216
+		</td>
+		<td>Klasse A: 16.777.216 Adressen
+		</td></tr>
+		<tr>
+		<td>172.16.0.0 bis 172.31.255.255
+		</td>
+		<td>172.16.0.0/12
+		</td>
+		<td>172.16/12
+		</td>
+		<td>2<sup>20</sup> = 1.048.576
+		</td>
+		<td>Klasse B: 65.536 Adressen
+		</td></tr>
+		<tr>
+		<td>192.168.0.0 bis 192.168.255.255
+		</td>
+		<td>192.168.0.0/16
+		</td>
+		<td>192.168/16
+		</td>
+		<td>2<sup>16</sup> = 65.536
+		</td>
+		<td>Klasse C: 256 Adressen
+	</td></tr></tbody></table>
+</div>
+	  <p>Tabelle mithilfe von <a href="https://de.wikipedia.org/wiki/Private_IP-Adresse">Wikipedia</a> erstellt</p>
+	  <p><h2>Localhost-Adresse:</h2>
+		Eine weitere Ausnahme bilden die localhost-Adressen: 127.0.0.0/8, denn diese sind ausschließlich für das 
+		eigene Gerät als „loopback“ einsetzbar. Mit der IP 127.0.0.1 kann z.B. getestet werden ob der eigene Rechner 
+		über das IP-Verfahren erreichbar ist.
+	  </p>
+	  <p><h2>Netzadresse:</h2>
+		Die Netzadresse ist lediglich dazu da ein Netzwerk zu beschreiben und ist immer die erste IP-Adresse 
+		in einem definierten Bereich. Die Netzadresse wird normalerweise zusammen mit dem Subnetz aufgeschrieben 
+		um ein Netzwerk-Bereich zu definieren. Also z.B.:
+		</p>
+	  <p>192.168.1.0/24</p>
+	  <p>Die Netzadresse hier würde also lauten: 192.168.1.0 – ein weiteres Beispiel:</p>
+	  <p>10.4.0.0/14</p>
+	  <p>Die Netzadresse: 10.4.0.0</p>
+	  <p>Man sollte jedoch aufpassen, wenn man eine Hostadresse bekommt und dessen zugehörige Subnetzmaske:</p>
+	  <p>192.168.1.151/24</p>
+	  <p>Hier wäre die Netzadresse auch: 192.168.1.0/24</p>
+	  <p><h2>Host-Adresse:</h2>
+		Anders als bei den Netzadressen beschreibt eine Hostadresse einfach nur ein bestimmtes Gerät. Es ist 
+		also einfach eine mögliche Adresse, die einem Gerät zugewiesen werden kann. Um bei dem obigen Beispiel 
+		zu bleiben:
+		</p>
+	  <p>Netzadresse: 192.168.1.0/24</p>
+	  <p>Mögliche Host-Adressen in diesem Netzwerk:</p>
+	  <p>192.168.1.1 – 192.168.1.254</p>
+	  <p><h2>Broadcast-Adresse:</h2>
+		Broadcast-Adressen bilden die letzte IP-Adresse in einem definierten Netzwerk. Diese kann so wie die Netzadresse nicht an ein Gerät vergeben werden und ist somit auch reserviert. Mit der Broadcast-Adresse ist es möglich allen Geräten im Netzwerk ein Signal zukommen zu lassen. Beispiel:
+		</p>
+	  <p>Netzadresse: 192.168.1.0/24</p>
+	  <p>Broadcast-Adresse 192.168.1.255/24 (letzte IP-Adresse in diesem Netzwerk)</p>
+
+
+	  <p><a href="{{kartenURL}}">Klicke hier</a> für die Flashcards</p>
+			</div>
+		</div>
+		
+		<div class="col-md-2">
+		{% include "sidebar.html" %}
+		</div>
+	</div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

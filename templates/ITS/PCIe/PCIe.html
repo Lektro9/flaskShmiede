@@ -1,0 +1,124 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<div class="container">
+	<div class="row justify-content-md-center">
+
+
+			
+		<div class="col-lg-10">
+		<div class="main">
+	
+			
+	
+	  <h1>{{aktThema}}</h1>
+	  
+	  <p>
+		Peripheral Component Interconnet Express (kurz: PCIe oder PCI-E) ist eine Schnittstelle 
+		für Erweiterungskarten in Computersystemen. Dazu zählt nicht nur die Verbindung (also die Leitung) 
+		selbst, sondern auch die Erweiterungs-Steckplätze. PCIe ist der Nachfolger von PCI, PCI-X und AGP. 
+		Der grundlegende Unterschied ist die Datenübertragungsgeschwindigkeit, welche bei PCIe höher ist. 
+		Daher ist PCIe auch für zeitkritische Anwendungen (Bild- und Ton-Wiedergabe) gut zu gebrauchen.
+		In der Zukunft wird die Bedeutung von PCIe höchst wahrscheinlich steigen, da PCIe, bzw. das 
+		Protokoll von PCIe als Grundlage für neue Schnittstellen sorgt (Bsp. M.2, U.2 oder auch SATA-Express).
+	  </p>
+	  <p><h2>Aufbau</h2>
+		Die Erweiterungskarte wird über ein Bussystem mit dem PCIe-Controller verbunden. Von diesen 
+		PCIe-Controllern gibt es auf einem Mainboard zwei, einer in der CPU und einer im Chipsatz. 
+		Der Controller der CPU steuert die Grafikkarten-Slots und der Controller des Chipsatzes die 
+		zusätzlichen Slots für weitere Komponente. Von diesen Controllern gehen je 16 Lanes aus, die 
+		die Slots versorgen.
+	  </p>
+	  <p><h2>Slots</h2>
+	  Es gibt aktuell vier verschiedene Steckplätze (PCIe x1, x4, x8 und x16). Der Unterschied dieser 
+	  Slots ist die unterschiedliche Anzahl an Lanes, mit der diese Slots angebunden sind. Damit 
+	  einhergehend sind die Steckplätze, die mit mehr Lanes angebunden sind auch Länger und haben 
+	  mehr Steckkontakte.
+	  </p>
+	  <p><h2>Übertragungstechnik</h2>
+	  Eine Lane (auch Link) sind zwei differenzielle Leitungspaare, ein Paar für den Datenversand 
+	  und das andere für den Datenempfang. Will man die Geschwindigkeit steigern, muss man mehrere 
+	  Lanes nutzen. Theoretisch ist es möglich, 32 Lanes zu bündeln. In der Praxis variiert es 
+	  allerdings leicht, wobei der Standard für eine Erweiterungskarte bei nur einer Lane ist.
+	  </p>
+	  <p>
+	  Ausnahme ist die Grafikkarte. Diese wird mit bis zu 16 Lanes angebunden. Will man mehrere 
+	  Grafikkarten nutzen muss man auf das Verfahren PCI-Sharing oder PCI-Switch zurückgreifen. 
+	  Die Grafikkartensteckplätze werden als PEG (PCI Express for Graphics) bezeichnet. 
+	  Die Parallelisierung der Daten geschieht hier nicht elektrisch, sondern auf einer höheren 
+	  Protokollebene. Dabei werden Laufzeitunterschiede, Leitungsstörungen und Ausfälle kompensiert.
+	  </p>
+	  
+	  <h2>Übersichtstabelle</h2>
+		<div class="table-responsive">
+			<table class="table table-sm table-hover">
+			  <tr>
+				<th>PCIe</th>
+				<th>Bandbreite pro Lane</th>
+				<th>PCIe x1</th>
+				<th>PCIe x4</th>
+				<th>PCIe x8</th>
+				<th>PCIe x16</th>
+				<th>verfügbar seit</th>
+			  </tr>
+			  <tr>
+				<td>1.0</td>
+				<td>2,5 GBit/s</td>
+				<td>250 MByte/s</td>
+				<td>1 GByte/s</td>
+				<td>2 GByte/s</td>
+				<td>4 GByte/s</td>
+				<td>2004</td>
+			  </tr>
+			  <tr>
+				<td>2.0</td>
+				<td>5 GBit/s</td>
+				<td>500 MByte/s</td>
+				<td>2 GByte/s</td>
+				<td>4 GByte/s</td>
+				<td>8 GByte/s</td>
+				<td>2008</td>
+			  </tr>
+			  <tr>
+				<td>3.0</td>
+				<td>10 GBit/s</td>
+				<td>0,9846 GByte/s</td>
+				<td>3,938 GByte/s</td>
+				<td>7,877 GByte/s</td>
+				<td>15,754 GByte/s</td>
+				<td>2011</td>
+			  </tr>
+			  <tr>
+				<td>4.0</td>
+				<td>20 GBit/s</td>
+				<td>1,969 GByte/s</td>
+				<td>7,877 GByte/s</td>
+				<td>15,754 GByte/s</td>
+				<td>31,508 GByte/s</td>
+				<td>2017</td>
+			  </tr>
+			</table>
+		</div>
+	  <p></p>
+	  <p></p>
+	  <p><b>Danke Robin für die Informationen :)</b></p>
+				
+	  <p><a href="{{kartenURL}}">Klicke hier</a> für die Flashcards</p>
+			</div>
+		</div>
+		
+		<div class="col-md-2">
+		{% include "sidebar.html" %}
+		</div>
+	</div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+
+{% set flashcard = "true" %}
+
+{% extends "header.html" %}
+
+
+{% block body %}
+  <div class="container">
+  
+  <h1>{{aktThema}}</h1>
+  <h2>{{aktFach}}</h2>
+  
+  <dl>
+  {% for t in Kartei %}
+    <card>
+      <dt>
+			{{t[0]}}
+	  </dt>
+      <dd>
+			{{t[1]}}
+	  </dd>
+    </card>
+   {% endfor %}	
+  </dl>
+  
+   </div>
+   
+    <div  class="mx-auto" style="width: 200px;"><a href="{{zurueckURL}}"><button type="button" class="btn btn-primary" >Zurück</button></a></div>
+	
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js'></script>
+
+	<script  src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}
+

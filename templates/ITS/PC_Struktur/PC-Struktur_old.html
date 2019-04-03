@@ -1,0 +1,20 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+<div class="p-5">
+{% include "sidebar.html" %}
+	<div class="main">
+	  <h1>{{aktThema}}</h1>
+	  <p><a href="{{kartenURL}}">Klicke hier</a> für die Flashcards</p>
+	  <p></p>
+	  <p></p>
+	  <p></p>
+	</div>  
+</div>
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

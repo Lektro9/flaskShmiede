@@ -1,0 +1,139 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<div class="container">
+	<div class="row justify-content-md-center">
+
+
+			
+		<div class="col-lg-10">
+		<div class="main">
+	  <h1>{{aktThema}}</h1>
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">RAM</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">ROM</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Cache</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+  <p>„RAM“ steht für „Random-Access Memory“ und ist sehr gut geeignet für direkten Zugriff auf alle Daten (direkte Ansprache einzelner Speicheradressen). 
+  Im deutschen auch bekannt als „Arbeitsspeicher“ besteht dieser aus <a href=“ https://de.wikipedia.org/wiki/Halbleiterspeicher“>Halbleiterspeichern</a>. 
+  RAM ist ein flüchtiger Speicher und geht somit verloren, wenn keine Stromquelle mehr vorhanden ist. Es gibt grob folgende Arten:</p>
+<ul>
+	<li>SRAM statischer RAM, behält seinen Speicherinhalt ohne Auffrischungszyklen (benötigt nur Anschlussspannung), braucht aber mehr 
+	Bauelemente als der DRAM und ist somit teurer und benötigt mehr Platz (findet aber Anwendung bspw. In Cache oder Mikrocontrollern)</li>
+	<li>DRAM Dynamisches RAM, muss refreshed (Spannung muss regelmäßig erneuert werden) werden, braucht aber weniger Bauelemente und 
+	ist somit günstiger (Speicherkondensator, Schalttransistor der den Speicher zugänglich macht), sinnvolle Anwendungsbereiche wären 
+	z.B. Arbeitsspeicher in einem PC, da dort viel Speicher gebraucht wird, dieser aber nicht so schnell sein muss wie das SRAM</li>
+</ul>
+  <p><h2>Geschwindigkeitsberechnung:</h2>
+	DDR3-1600(Geschwindigkeit in MHz) (PC-12800)(Geschwindigkeit in MBit/s) <-  um jetzt die Geschwindigkeit in z.B. Megabytes umzurechnen:
+	</p>
+  <p>64 Bit &#8729; 1600 MHz &#8725; 8 = 12800 Mbyte/s</p>
+  <p>64 Bit steht für die Busbreite, 1600 MHz ist die Taktfrequenz (bei DDR 800 Mhz x2 wegen "Dual-Data-Rate") und 8 ist zur Umrechnung in Byte.</p>
+  <p>Um zu verstehen warum man bei DDR RAM die "eigentliche" Taktrate verdoppeln muss, ist es sinnvoll sich die Arbeitsweisen von RAM anzgucken 
+  (im Buch Seite 72 für ein entsprechendes Bild):</p>
+ <ul>
+	<li><h5>SDR-RAM</h5>
+		<ul>
+			<li>Speichermatrix und I/O-Buffer sind über <b>eine</b> Datenpipeline miteinander verbunden</li>
+			<li>Speichermatrix, I/O-Buffer und Speicherbus werden mit <b>der selben</b> Frequenz getaktet</li>
+			<li>Übertragung findet <b>nur mit steigender</b> Taktflanke statt</li>
+		</ul>
+	</li>
+	<li><h5>DDR-RAM</h5>
+		<ul>
+			<li>Speichermatrix und I/O-Buffer sind über <b>zwei</b> Datenpipelines miteinander verbunden</li>
+			<li>Speichermatrix, I/O-Buffer und Speicherbus werden mit <b>der selben</b> Frequenz getaktet</li>
+			<li>Übertragung findet auf <b>steigender und fallender</b> Taktflanke statt</li>
+			<ul><li><b>Verdopplung</b> der theoretischen Bandbreite gegenüber SDR-RAM</li></ul>
+		</ul>
+	</li>
+	<li><h5>DDR2-RAM</h5>
+		<ul>
+			<li>Speichermatrix und I/O-Buffer sind über <b>vier</b> Datenpipelines miteinander verbunden</li>
+			<li>Der Takt des I/O-Buffers entspricht dem <b>doppelten</b> Takt der Speichermatrix</li>
+			<li>Der Takt des Speicherbusses entspricht dem doppelten Takt der Speichermatrix oder er
+			verwendet zwei Datenkanäle, die mit dem selben Takt wie die Speichermatrix getaktet werden</li>
+			<ul><li><b>Verdopplung</b> der theoretischen Bandbreite gegenüber DDR-RAM</li></ul>
+		</ul>
+	</li>
+	<li><h5>DDR3-RAM</h5>
+		<ul>
+			<li>Speichermatrix und I/O-Buffer sind über <b>acht</b> Datenpipelines miteinander verbunden</li>
+			<li>I/O-Buffer und Speicherbus arbeiten mit <b>vierfachem</b> Takt der Speichermatrix</li>
+			<ul><li><b>Verdopplung</b> der theoretischen Bandbreite gegenüber DDR2-RAM</li></ul>
+			<li>Aufgrund von größeren Zugriffszeiten von DDR3-Speichern fällt die reale
+				Geschwindigkeitssteigerung jedoch geringer aus</li>
+		</ul>
+	</li>
+	<li><h5>DDR4-RAM</h5>
+		<ul>
+			<li>Speichermatrix und I/O-Buffer sind hier ebenfalls über <b>acht</b> Datenpipelines miteinander
+				verbunden (andernfalls wäre breiterer Datenbus erforderlich gewesen)</li>
+			<li>Stattdessen andere Organisationsstruktur und schnellere Zwischenspeicher, die höhere
+				Taktfrequenzen erlauben</li>
+		</ul>
+	</li>
+</ul>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+  <p>„ROM“ steht für „Read Only Memory“ und besagt zunächst erstmal nur, dass dieser Speicher nicht veränderbar oder nur sehr schwer 
+  veränderbar ist. Wie der Name vermuten lässt handelt es sich hierbei um einen „Lesespeicher“ oder auch „Festwertespeicher“. 
+  Es existieren unterschiedliche Arten von ROM:</p>
+<ul>
+	<li>Masken-ROM, nur zum Fertigungszeitpunkt programmierbar</li>
+	<li>Programmable Read-Only Memory (PROM), einmalig programmierbar</li>
+	<li>Erasable Programmable Read-Only Memory (EPROM), löschbar mit UV-Licht</li>
+	<li>Electrically Erasable Programmable Read-Only Memory (EEPROM), elektrisch löschbar</li>
+</ul>
+  <p>Eingesetzt wurden ROMs ursprünglich für diverse BIOS (welche heute oft durch flash-Speicher ersetzt wurden).</p>
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+	<p>Cache ist ebenfalls eine Art von SRAM und wird als „Puffer-Speicher“ genutzt um Zugriffe auf 
+	langsame Hintergrundmedien sowie aufwendige Neuberechnungen in der CPU zu vermeiden. Cache ist 
+	also ein Speicher, der wichtige Daten schneller abrufbar macht. Andersherum kann der Cache auch 
+	Daten aus einem Hintergrundmedium (z.B. Festplatte oder RAM) auslesen, die wahrscheinlich bald 
+	benötigt werden, um eine Verarbeitung zu beschleunigen (auch als „read-ahead“ bekannt). Es gibt
+	folgende Arten:</p>
+<ul>
+	<li>Laufwerkscache (soll Zugriffszeiten und Schwankungen im Datenstrom abfangen)</li>
+	<li>Prozessorcache (Kleiner Level sind schneller aber haben eine kleinere Größe)</li>
+		<ul>
+			<li>L1 (Level1, am nächsten an der CPU, 4KiB bis 256KiB pro Prozessorkern, 
+			arbeitet mit dem vollen Prozessortakt, am häufigsten benötigte Befehle und Daten 
+			werden hier gespeichert, der Cache vermeidet Verzögerungen und hilft dabei die CPU 
+			optimal auszulasten)</li>
+			<li>L2 (Level2, 64KiB bis 1024 KiB pro Prozessorkern, die Daten des RAMs werden hier zwischengespeichert)</li>
+			<li>L3 (Level3, 2MiB bis 32MiB für alle Kerne, soll bei Multicore Prozessoren das Cache-Koheränz Protokoll 
+			(verhindert, dass die einzelnen Caches für dieselbe Speicheradresse unterschiedliche Daten zurückliefern) 
+			und den Datenaustausch zwischen den Kernen vereinfachen und beschleunigen)</li>
+		</ul>
+</ul>
+  </div>
+</div>	  
+
+	  <p><b>Danke an Lukas und Vincent für die Informationen :)</b></p>
+	  <p></p>
+	  <p><a href="{{kartenURL}}">Klicke hier</a> für die Flashcards</p>
+			</div>
+		</div>
+		
+		<div class="col-md-2">
+		{% include "sidebar.html" %}
+		</div>
+	</div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

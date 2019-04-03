@@ -1,0 +1,195 @@
+{% set sidenav = "true" %}
+
+{% extends "header.html" %}
+
+{% block body %}
+
+
+<div class="container">
+	<div class="row justify-content-md-center">
+
+
+			
+		<div class="col-lg-10">
+		<div class="main">
+	  <h1>{{aktThema}}</h1>
+	  <p>Eine Subnetzmaske ist genauso lang wie eine IP-Adresse (32 Bit) und gibt in der Reihenfolge „1“-en 
+	  oder „0“-en an. Es können keine „1“-en oder „0“-en zwischendurch auftauchen. Damit ist gemeint, dass 
+	  eine Netzmaske sich nur mit „1“-en von links nach rechts und andersherum sich nur mit „0“-en von rechts 
+	  nach links füllen kann. Somit ergeben sich zwei Teile: </p>
+	  <ul>
+		  <li>"Netzanteil" oder auch „Präfix“ (feste Bits)</li>
+		  <li>„Hostanteil“ oder auch „Geräteteil“ (freie Bits)</li>
+	  </ul>
+	  <p>Eine Netzmaske wird an eine IP-Adresse gehalten um festzustellen ob die besagte IP-Adresse zum Netzwerk 
+	  gehört oder nicht. An dem folgenden Beispiel ist es verständlicher:</p>
+		<table class="table table-bordered table-sm">
+		<tbody><tr>
+		<td>
+		</td>
+		<td>IPv4-Adresse
+		</td>
+		<td><code>11000000 10101000 00000001 10000001</code>
+		</td>
+		<td>192.168.1.129
+		</td></tr>
+		<tr>
+		<td align="center">UND
+		</td>
+		<td>Netzmaske&#160;&#160;&#160;&#160;
+		</td>
+		<td><code><span style="color:#008000">11111111 11111111 11111111</span> <span style="color:#FF0000">00000000</span></code>
+		</td>
+		<td>255.255.255.0
+		</td></tr>
+		<tr>
+		<td align="center">=
+		</td>
+		<td>Netzwerkteil
+		</td>
+		<td><code>11000000 10101000 00000001 00000000</code>
+		</td>
+		<td>192.168.1.0
+		</td></tr></tbody></table>
+	
+	  <p>Hier kann man erkennen, dass nur die „0“-en von der Netzmaske nicht geprüft werden. 
+	  Dies hat zur Folge, dass die Beispiel IP-Adresse Zugriff auf das Netzwerk hat, obwohl sie eine andere Bitfolge im 4.Oktett besitzt.</p>
+	  <p>Eine Subnetzmaske hat verschiedene Schreibweisen. In den Windows-Netzwerk Einstellungen 
+	  ist die „dotted decimal notation“ -Schreiweise üblich:</p>
+	  <p><img src="{{ url_for('static', filename='ipv4einstellungen.JPG') }}" style="width:30%"></p>
+	  <p>Jedoch gibt es eine weitere weitverbreitete Schreibweise: „Classless Inter-Domain Routing“ 
+	  (kurz „CIDR“). Diese Schreibweise zählt alle Bits die auf „1“ stehen zusammen und zeigt die Summe 
+	  mit einem „/“ an: z.B.: /24.</p>
+	  <p><h2>Netzwerke selber bilden:</h2></p>
+	  <ul>
+		  <li>gegeben: 192.168.1.0/24</li>
+		  <li>gesucht: 3 Netze,
+		  1./2. Netz- und Broadcastadresse, sowie die letzten Beiden der gesuchten Netze,
+		  außerdem die zugehörigen 1. - letzten möglichen zu vergebenen IP-Adressen
+			</li>
+	  </ul>
+	  <p>Da wir ein großes Netz mithilfe des Subnetzes aufteilen wollen, können wir nicht genau 
+	  3 gleichgroße Netze erstellen. Das liegt daran, dass das Subnetz nicht Bits zwischen den 1en 
+	  öffnen kann, sondern nur nacheinander in der Reihe von rechts nach links. Dies gibt uns nur 
+	  die Möglichkeit Netze in Zweierpotenzen aufzuteilen (z.B.: 2, 4, 8, 16, 32, 64, 128, etc. Netze). Ein weiterer guter Grund sich 
+	  die Zweierpotenzen-Tabelle aufzuschreiben:</p>
+	  <div class="table-responsive">
+		<table class="table table-sm table-hover">
+		  <thead>
+			<tr>
+			  <th scope="col">2<sup>8</sup></th>
+			  <th scope="col">2<sup>7</sup></th>
+			  <th scope="col">2<sup>6</sup></th>
+			  <th scope="col">2<sup>5</sup></th>
+			  <th scope="col">2<sup>4</sup></th>
+			  <th scope="col">2<sup>3</sup></th>
+			  <th scope="col">2<sup>2</sup></th>
+			  <th scope="col">2<sup>1</sup></th>
+			  <th scope="col">2<sup>0</sup></th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td>256</td>
+			  <td>128</td>
+			  <td>64</td>
+			  <td>32</td>
+			  <td>16</td>
+			  <td>8</td>
+			  <td>4</td>
+			  <td>2</td>
+			  <td>1</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	  
+	  <p>3 Schritte um das Ergebnis zu erhalten:</p>
+	  
+		<ol>
+		  <li>Anhand der Tabelle kann man also die nächstmögliche Anzahl an gleichgroßen Netzwerken 
+		  sehen: für 3 Netzwerke also: 2^2 (4). Dies gibt uns nun die erforderlichen weiteren Bits, die in der Subnetzmaske auf "1" gestellt
+		  werden müssen. In diesem Fall wäre es nun also /26. Um dies nun in die 
+		  „dotted decimal notation“ (Dezimal-Schreibweise) umzuwandeln müssen wir folgendes tun:<br>
+			Ein volles Oktett (also 11111111) ist in der „dotted decimal notation“ 255. Wenn wir also 
+			dann ein Oktett von der CIDR Schreibweise abziehen (da diese ja die Summe der Anzahl 1en ist). 
+			Demzufolgeolge kann man schnell feststellen, dass wir in diesem Fall 3 volle Oktetten besitzen (also dezimal: 255.255.255) und 
+			2 weitere Bits, die zu dem 4. Oktett gehören. Die Summe der beiden Bit-Werte wäre dann die Zahl 192. 
+			Somit ergibt sich die Subnetzmaske: 255.255.255.192 oder /26.
+			</li>
+		  <li>Jetzt kommen die Netzadressen, mit denen man ganz schnell den Rest der gesuchten Adressen finden 
+		  kann. Hier teilen wir zunächst die Anzahl der möglichen Adressen (hier also 256) durch die Anzahl der 
+		  möglichen Netze (hier sind es 4). Dies ergibt in unserem Fall 64. Das bedeutet wir müssen die Netzadressen
+		  und deren Subnetzmaske im Abstand von 64 aufteilen.</li>
+		  <li>Danach bestimmen wir die möglichen Adressen. Diese fangen an bei Netzadresse +1 und höheren auf bei 
+		  der nächsten Netzadresse -2. Die Broadcastadresse ist dann die letzte Adresse vor der nächsten Netzadresse und die Subnetzmaske 
+		  haben wir oben bereits ausgerechnet. Somit wäre folgendes Ergebnis richtig:</li>
+		</ol>
+		
+	<div class="table-responsive">
+		<table class="table table-bordered table-sm">
+		  <tr>
+			<th>Netzadresse</th>
+			<th>mögliche Adressen</th>
+			<th>Broadcast - Adresse</th>
+			<th>Subnetzmaske</th>
+		  </tr>
+		  <tr>
+			<td>192.168.1.0</td>
+			<td>1.1 – 1.62</td>
+			<td>1.63</td>
+			<td>255.255.255.192 /26</td>
+		  </tr>
+		  <tr>
+			<td>192.168.1.64</td>
+			<td>1.65 - 1.126</td>
+			<td>1.127</td>
+			<td>"</td>
+		  </tr>
+		  <tr>
+			<td>192.168.1.128</td>
+			<td>1.129 - 1.190</td>
+			<td>1.191</td>
+			<td>"</td>
+		  </tr>
+		  <tr>
+			<td>192.168.1.192</td>
+			<td>1.193 - 1.254</td>
+			<td>1.255</td>
+			<td>"</td>
+		  </tr>
+		</table>
+	</div>
+		
+	  <p>Natürlich ist es schwierig bei 3 gesuchten Netzen 4 anzugeben. Bei so einer Aufgabe hätte auch die ersten 3 gereicht.</p>
+	  <p></p>
+	  <p></p>
+	  <p></p>
+	  <p></p>
+	  
+	  
+	  <h2>Rechnen im Videoformat:</h2>
+	  <div class="embed-responsive embed-responsive-16by9">
+		  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-3fTHaU2fmw" allowfullscreen></iframe>
+	  </div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  <p><a href="{{kartenURL}}">Klicke hier</a> für die Flashcards</p>
+			</div>
+		</div>
+		
+		<div class="col-md-2">
+		{% include "sidebar.html" %}
+		</div>
+	</div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+{% endblock %}

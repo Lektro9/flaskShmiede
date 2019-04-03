@@ -1,0 +1,25 @@
+	<div class="sidenav">
+	  {% if aktFach == "ITS" %}
+	  {% for t in ITS_THEMEN %}
+	  <a href="/ITS{{t[1]}}">{{t[0]}}</a>
+	  {% endfor %}
+	  {% endif %}
+	  
+	  {% if aktFach == "AWE" %}
+	  {% for t in AWE_THEMEN %}
+	  <a href="/AWE{{t[1]}}">{{t[0]}}</a>
+	  {% endfor %}
+	  {% endif %}
+	  
+	  {% if aktFach == "Englisch" %}
+	  {% for t in ENG_THEMEN %}
+	  <a href="/Englisch{{t[1]}}">{{t[0]}}</a>
+	  {% endfor %}
+	  {% endif %}
+	  
+	  {% if aktFach == "WGP" %}
+	  {% for t in WGP_THEMEN %}
+	  <a href="/WGP{{t[1]}}">{{t[0]}}</a>
+	  {% endfor %}
+	  {% endif %}
+	</div>
